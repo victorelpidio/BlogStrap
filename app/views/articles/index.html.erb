@@ -1,29 +1,23 @@
-<p id="notice"><%= notice %></p>
+<%= render 'longer_featured' %>
 
-<h1>Articles</h1>
+<div class='row mb-2'>
+  <%= render 'medium_featured'  %>
+  <%= render 'medium_featured'  %>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="row g-5">
+  <div class="col-md-8">
+    <h3 class="pb-4 mb-4 fst-italic border-bottom">
+      From the Firehose
+    </h3>
 
-  <tbody>
-    <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.title %></td>
-        <td><%= article.body %></td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <p><%= link_to 'New Article', new_article_path, class:"btn btn-primary" %> </p>
 
-<br>
+    <%= render @articles %>
+   
+    <%= render 'pagination' %>
 
-<%= link_to 'New Article', new_article_path %>
+  </div>
+
+  <%= render 'right_side' %>
+</div>

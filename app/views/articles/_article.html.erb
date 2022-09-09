@@ -1,0 +1,10 @@
+
+<article class="blog-post">
+  <h2 class="blog-post-title"><%= article.title %></h2>
+  <p class="blog-post-meta"><%= handle_date(article.created_at)%> by <a href="#">Chris</a></p>
+
+  <p><%= truncate(article.body, lenght: 150) %></p> <!--truncate: serve para minimizar um texto(helper do rails) -->
+
+  <p><%= link_to 'Continue reading...', article, class: "btn btn-outline-primary"  %></p>
+
+</article>

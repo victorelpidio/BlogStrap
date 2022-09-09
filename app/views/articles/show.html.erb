@@ -1,14 +1,13 @@
-<p id="notice"><%= notice %></p>
+<article class="blog-post">
+  <h2 class="blog-post-title"><%=  @article.title %></h2>
+  <p class="blog-post-meta"><%= handle_date(@article.created_at)%> by <a href="#">Chris</a></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
+  <p><%= @article.body%></p>
 
-<p>
-  <strong>Body:</strong>
-  <%= @article.body %>
-</p>
-
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+  <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-outline-secondary" %> 
+  <%= link_to 'Destroy', article_path(@article),
+        method: :delete,
+        data: {confirm: 'Are you sure?'},
+        class:"btn btn-outline-danger" %>
+  <%= link_to 'Back', articles_path, class:"btn btn-outline-dark" %>
+</article>
