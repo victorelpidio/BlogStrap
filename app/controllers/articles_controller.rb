@@ -3,14 +3,14 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @highlights = Article.order(created_at: :desc).first(3)
+    @highlights = Article.desc_order.first(3)
     
     current_page = (params[:page || 1]).to_i   #paginaçao (kaminari)
     highlight_ids = @highlights.pluck(:id).join(',') #vai pegar os tres ultimos resgistro pelo id e pegar como uma string (.join)
 
-    @articles = Article.order(created_at: :desc)
-                       .where("id NOT IN(#{highlight_ids})")
-                       .page(current_page).per(2) #order(created_at: :desc): vai ser decrescente(os ultimos os serao os primeiros)
+    @articles = Article.without_highlights(highlight_ids) #scope no model
+                       .desc_order
+                       .page(current_page) #order(created_at: :desc): vai ser decrescente(os ultimos os serao os primeiros)
   end
 
   # GET /articles/1 or /articles/1.json
