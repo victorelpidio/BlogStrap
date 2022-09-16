@@ -7,7 +7,7 @@
 
       <div class="mb-1 text-muted"><%= handle_date(article.created_at)%> by <a href="#">Chris</a></div>
 
-      <p class="card-text mb-auto"><%= truncate(article.body, lenght: 150)%></p>
+      <p class="card-text mb-auto"><%= truncate(article.body, lenght: 250)%></p>
 
       <%= link_to 'Continue reading...', article, class:"stretched-link" %>
     </div>

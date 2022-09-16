@@ -1,4 +1,4 @@
-<%= render_if  @highlights[0].present?, 'longer_featured', article: @highlights[0] %>
+<%= render_if  @highlights[0].present?, 'longer_featured', article: @highlights[0] %> <%#helper utilizado para apacerer nos cards, de acordo com o article%>
 
 <div class='row mb-2'>
   <%= render_if  @highlights[1].present?, 'medium_featured', article: @highlights[1] %>
