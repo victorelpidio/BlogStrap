@@ -1,4 +1,4 @@
-<%= render_if  @highlights[0].present?, 'longer_featured', article: @highlights[0] %> <%#helper utilizado para apacerer nos cards, de acordo com o article%>
+<%= render_if  @highlights[0].present?, 'longer_featured', article: @highlights[0] %> <%#helper utilizado para aparecer nos cards, de acordo com o article%>
 
 <div class='row mb-2'>
   <%= render_if  @highlights[1].present?, 'medium_featured', article: @highlights[1] %>
@@ -11,7 +11,7 @@
       From my Experience
     </h3>
 
-    <p><%= link_to 'New Article', new_article_path, class:"btn btn-primary" %> </p>
+    <p><%= link_to 'New Article', new_article_path, class:"btn btn-primary" %></p>
 
     <%= render @articles %>
    
