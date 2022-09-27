@@ -1,7 +1,7 @@
 
 <article class="blog-post">
   <h2 class="blog-post-title"><%= article.title %></h2>
-  <p class="blog-post-meta"><%= handle_date(article.created_at)%> by <a href="#">Chris</a></p>
+  <p class="blog-post-meta"><%= handle_date(article.created_at)%> by <%= article.user.email  %></p>
 
   <p><%= truncate(article.body, lenght: 150) %></p> <!--truncate: serve para minimizar um texto(helper do rails) -->
 
