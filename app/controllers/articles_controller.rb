@@ -1,25 +1,26 @@
 class ArticlesController < ApplicationController
-  include Paginable # esta na pasta concerns
+  include Paginable # esta na pasta /concerns
 
   before_action :authenticate_user!, except: %i[ index show ]
   before_action :set_article, only: %i[ show edit update destroy ]
   
   # GET /articles or /articles.json
   def index
-    category = Category.find_by_name(params[:category]) if params[:category].present?
+    @categories = Category.sorted
+    category = @categories.select { |c| c.name == params[:category] }[0] if params[:category].present?
 
-    @highlights = Article.filter_by_category(category)
+    @highlights = Article.includes(:category, :user) #faz a busca sem ir tanto no banco (bullet)
+                         .filter_by_category(category)
                          .desc_order
                          .first(3)
     
     highlight_ids = @highlights.pluck(:id).join(',') #vai pegar os tres ultimos resgistro pelo id e pegar como uma string (.join)
 
-    @articles = Article.without_highlights(highlight_ids) #scope no model
+    @articles = Article.includes(:category, :user)
+                       .without_highlights(highlight_ids) #scope no model
                        .filter_by_category(category)
                        .desc_order
                        .page(current_page) #order(created_at: :desc): vai ser decrescente(os ultimos os serao os primeiros)
-    
-    @categories = Category.sorted
   end
 
   # GET /articles/1 or /articles/1.json
