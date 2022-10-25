@@ -11,6 +11,7 @@ class ArticlesController < ApplicationController
 
     @highlights = Article.includes(:category, :user) #faz a busca sem ir tanto no banco (bullet)
                          .filter_by_category(category)
+                         .filter_by_archive(params[:month_year])
                          .desc_order
                          .first(3)
     
@@ -19,8 +20,11 @@ class ArticlesController < ApplicationController
     @articles = Article.includes(:category, :user)
                        .without_highlights(highlight_ids) #scope no model
                        .filter_by_category(category)
+                       .filter_by_archive(params[:month_year])
                        .desc_order
                        .page(current_page) #order(created_at: :desc): vai ser decrescente(os ultimos os serao os primeiros)
+                      
+    @archives = Article.group_by_month(:created_at, format: '%B %Y').count
   end
 
   # GET /articles/1 or /articles/1.json
