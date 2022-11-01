@@ -3,7 +3,7 @@
   <div class='form-inputs'>
     <%= f.input :title %>
     <%= f.input :body, input_html:{rows: 10} %> <%#rows: 10 :tamanho da area do texto%>
-    <%= f.association :category, collection: Category.sorted, prompt: "Chosse a Category" %> <%#ira aparecer os campos da tabela categoria(apenas para selecionar) // prompt=placeholder%>
+    <%= f.association :category, collection:  @categories, prompt: "Chosse a Category" %> <%#ira aparecer os campos da tabela categoria(apenas para selecionar) // prompt=placeholder%>
   </div>
 
 
