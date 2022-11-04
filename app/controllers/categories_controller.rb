@@ -1,15 +1,17 @@
 class CategoriesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_category, only: %i[ edit update destroy ]
 
   # GET /categories or /categories.json
   def index
-    @categories = Category.sorted
+    @categories = policy_scope(Category.sorted)
   end
 
 
   # GET /categories/new
   def new
     @category = Category.new
+    authorize @category #comando do pundit
   end
 
   # GET /categories/1/edit
@@ -19,6 +21,7 @@ class CategoriesController < ApplicationController
   # POST /categories or /categories.json
   def create
     @category = Category.new(category_params)
+    authorize @category #comando do pundit
 
     respond_to do |format|
       if @category.save
@@ -60,6 +63,7 @@ class CategoriesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_category
       @category = Category.find(params[:id])
+      authorize @category
     end
 
     # Only allow a list of trusted parameters through.
