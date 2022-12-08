@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'articles#index'
   
   resources :articles do 
-    resources :comments, only: %i[create] #para o comentario estar dentro do article
+    resources :comments, only: %i[create destroy] #para o comentario estar dentro do article
   end
 
   resources :categories, except: [:show]
