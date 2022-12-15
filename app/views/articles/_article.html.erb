@@ -7,6 +7,6 @@
 
   <p><%= truncate(article.body, length: 50) %></p> <!--truncate: serve para minimizar um texto(helper do rails) -->
 
-  <p><%= link_to 'Continue reading...', article, class: "btn btn-outline-primary"  %></p>
+  <p><%= link_to t('articles.continue_reading'), article, class: "btn btn-outline-primary"  %></p>
 
 </article>

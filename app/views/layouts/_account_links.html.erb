@@ -1,15 +1,15 @@
 <% if user_signed_in? %>
   <div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-      <%= current_user.email %>
+      <%= sub_masked_email(current_user.email) %> <%#helper%>
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-      <li><%= link_to 'Edit User', edit_user_registration_path, class: 'dropdown-item' %></li> <%#editar o usuario%>
+      <li><%= link_to t('app.menu.edit_user'), edit_user_registration_path, class: 'dropdown-item' %></li> <%#editar o usuario%>
       <li><hr class='dropdown-divider'></li>
-      <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'dropdown-item' %></li> <%#deslogar do usuario %>
+      <li><%= link_to t('app.menu.sign_out'), destroy_user_session_path, method: :delete, class: 'dropdown-item' %></li> <%#deslogar do usuario %>
     </ul>
   </div>
 <% else %>
-  <%= link_to 'Sign in', new_user_session_path, class: 'link-secondary' %> &nbsp;&nbsp; <%#&nbsp; (da um espaçamento lateral%>
-  <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-sm btn-outline-secondary' %>
+  <%= link_to t('app.menu.sign_in'), new_user_session_path, class: 'link-secondary' %> &nbsp;&nbsp; <%#&nbsp; (da um espaçamento lateral%>
+  <%= link_to t('app.menu.sign_up'), new_user_registration_path, class: 'btn btn-sm btn-outline-secondary' %>
 <% end %>
