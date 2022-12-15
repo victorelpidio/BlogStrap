@@ -1,0 +1,25 @@
+pt-BR:
+  articles:
+    continue_reading: Continue lendo...
+    about:
+      title: Sobre
+      description: Sou Victor Elpidio e gosto de programar em Ruby on Rails.
+    archives: Arquivos
+    elsewhere: Em outro lugar
+    index:
+      subtitle: Da minha Experiência
+      new_article: Novo Artigo
+    new:
+      title: Novo Artigo
+    create:
+      success: Artigo foi criado com sucesso.
+    update:
+      success: Artigo foi alterado com sucesso.
+    destroy:
+      success: Artigo foi excluído com sucesso.
+    form:
+      choose_category: Escolha uma Categoria
+    show:
+      comments: Comentários
+      add_comment: "Adicione um comentário:"
+      login_create_comment: Por favor, faça o login para criar um comentário.
