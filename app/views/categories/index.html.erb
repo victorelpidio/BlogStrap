@@ -1,4 +1,4 @@
-<h1>Categories</h1>
+<h1><%= t Category.model_name.human(count: 2) %></h1>
 <br>
 <p>
   <%= link_to 'New Category', new_category_path, class:"btn btn-primary" if policy(:category).new?  %>
@@ -7,7 +7,7 @@
 <table class="table table-striped table-hover table-bordered">
   <thead>
     <tr>
-      <th>Name</th>
+      <th><%= t Category.human_attribute_name('name') %></th>
       <th>Actions</th>
     </tr>
   </thead>
