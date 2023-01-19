@@ -25,7 +25,7 @@ class ArticlesController < ApplicationController
                        .desc_order
                        .page(current_page) #order(created_at: :desc): vai ser decrescente(os ultimos os serao os primeiros)
                       
-    @archives = Article.group_by_month(:created_at, format: '%B %Y').count
+    @archives = Article.group_by_month(:created_at, format: '%B %Y', locale: :en).count
   end
 
   # GET /articles/1 or /articles/1.json
